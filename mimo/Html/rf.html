@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <form action="/server">
+        <div>
+            <input type="text" placeholder="Firstname">
+            <input type="text" placeholder="Lastname">
+        </div>
+        <div>
+            <label for="sub">your subject</label>
+            <select id="sub">
+                <option value="math" selected>math</option>
+                <option value="science">science</option>
+                <option value="sociel_sc">sociel sc</option>
+                <option value="economics">economics</option>
+            </select>
+        </div>
+        <div>
+            Do you agree to all terms and servises?
+           
+            <input type="checkbox"id="terms" checked>
+            <label for="terms">yes,I agree</label><br>
+            <button>Register</button>
+        </div>
+    </form>
+</body>
+</html>
