@@ -38,5 +38,3 @@ public class Sort {
         quicksort(arr,0,arr.length-1);
         printlist(arr);
     }
-}
-//deep joshi is my name.
