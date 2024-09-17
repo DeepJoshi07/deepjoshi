@@ -1,0 +1,23 @@
+.parent{
+    background-color: aqua;
+    height: 600px;
+    width: 400px;
+    color: azure;
+    display: flex;
+    text-align: center;
+    /* flex-wrap: wrap; */
+    align-content: center;
+}
+div>div{
+    background-color: slateblue;
+    height: 100px;
+    width: 100px;
+    border: solid 2px black;
+    margin: 5px;
+}
+.child1{
+    /* flex-basis: 200px; */
+    /* flex-grow: 2; */
+    /* flex-shrink: 2; */
+    min-width: 100px;
+}

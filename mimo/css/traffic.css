@@ -1,0 +1,22 @@
+div.main{
+    background-color: black;
+    border: solid 2px blue;
+    height: 400px;
+    width: 150px;
+}
+.kid{
+    margin: 20px;
+    border-radius: 50%;
+    border: solid 2px black;
+    height: 100px;
+    width: 100px;
+}
+#one{
+    background-color: red;
+}
+#two{
+    background-color: yellow;
+}
+#three{
+    background-color: green;
+}

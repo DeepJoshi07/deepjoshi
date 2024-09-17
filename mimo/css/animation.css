@@ -1,0 +1,25 @@
+.parent{
+    background-color: blanchedalmond;
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+div>div{
+    background-color: lightcoral;
+    height: 100px;
+    width: 500px;
+    margin: 5px;
+    animation: hei 4s ease-in-out 0s 4 alternate;
+}
+/* @keyframes hei{
+    from{width: 500px;}
+    to{width:100px;
+        background-color: brown;
+    }
+} */
+@media(min-width : 200px) and (max-width : 600px){
+    .parent{
+        background-color: slateblue;
+    }
+}
