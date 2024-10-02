@@ -103,7 +103,25 @@ public class Sortingpr {
         }
     }
 
-    public static void countsort(){}
+    public static void countsort(int arr[]){
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length;i++){
+            if(arr[i] > max){
+                max = arr[i];
+            }
+        }
+        int [] temp= new int [max+1];
+        for(int i = 0; i < arr.length;i++){
+            temp[arr[i]]++;
+        }
+        int idx = 0;
+        for(int i = 0 ; i < temp.length;i++){
+            if(temp[i] > 0){
+                arr[idx++] = i;
+                temp[i]--;
+            }
+        }
+    }
 
     public static void printarr(int[]arr){
         for(int i = 0;i < arr.length;i++){
@@ -117,7 +135,8 @@ public class Sortingpr {
         // mergesort(arr, 0, arr.length-1);
         // bubblesort(arr);
         // selectionsort(arr);
-        insertionsort(arr);
+        // insertionsort(arr);
+        countsort(arr);
         printarr(arr);
     }
 }
