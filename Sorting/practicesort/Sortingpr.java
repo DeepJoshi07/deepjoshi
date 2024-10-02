@@ -64,6 +64,47 @@ public class Sortingpr {
             arr[i] = temp[k];
         }
     }
+    public static void bubblesort(int arr[]){
+        for(int i = 0; i < arr.length;i++){
+            for(int j = 0; j < arr.length-1;j++){
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void selectionsort(int arr[]){
+        for(int i = 0; i < arr.length;i++){
+            int minidx = i;
+            for(int j = i+1; j < arr.length;j++){
+                if(arr[j] < arr[minidx]){
+                    minidx = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[minidx];
+            arr[minidx] = temp;
+        }
+    }
+
+    public static void insertionsort(int arr[]){
+        for(int i = 1;i < arr.length;i++){
+            int curr = arr[i];
+            int previdx = i-1;
+
+            while(previdx >= 0 && arr[previdx] > curr){
+                arr[previdx+1] = arr[previdx];
+                previdx-=1;
+            }
+            arr[previdx+1] = curr;
+        }
+    }
+
+    public static void countsort(){}
+
     public static void printarr(int[]arr){
         for(int i = 0;i < arr.length;i++){
             System.out.print(arr[i] + " ");
@@ -73,7 +114,10 @@ public class Sortingpr {
     public static void main(String[] args) {
         int arr[]={4,6,1,7,3,2,5};
         // quicksort(arr,0,arr.length);
-        mergesort(arr, 0, arr.length-1);
+        // mergesort(arr, 0, arr.length-1);
+        // bubblesort(arr);
+        // selectionsort(arr);
+        insertionsort(arr);
         printarr(arr);
     }
 }
