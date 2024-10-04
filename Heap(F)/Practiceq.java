@@ -35,18 +35,35 @@ public class Practiceq {
                 return this.soldiers - r.soldiers;
             }
         }
+
     }
+
+    static class Pair implements Comparable<Pair>{
+        int val;
+        int idx;
+
+        public Pair(int v,int i){
+                this.val = v;
+                this.idx = i;
+            }
+
+        @Override
+        public int compareTo(Pair p){
+            return p.val - this.val;
+        }
+        }
     public static void main(String []args){
         int pts[][] ={{3,3},{5,-1},{-2,4}};
-        int k = 2;
+        int l = 2;
 
         PriorityQueue <Position> pq = new PriorityQueue<>();
+
             for(int i = 0; i < pts.length; i++){
                 int dis_sqr = pts[i][0]*pts[i][0]+pts[i][1]*pts[i][1];
                 pq.add(new Position(3,3,dis_sqr,i));
             }
 
-            for (int i = 0;i < k;i++){
+            for (int i = 0;i < l;i++){
                 System.out.println("C"+pq.remove().idx);
             }
 
@@ -87,6 +104,30 @@ public class Practiceq {
             for(int i = 0 ;i < weak; i++){
                 System.out.println("R"+ns.remove().idx);
             }
+        
+        // Quetion 4
+        int arr[]={1,3,-1,-3,5,3,6,7};
+        int k = 3;
+        int res[] = new int [arr.length-k+1];
+            PriorityQueue <Pair> pqp = new PriorityQueue<>();
+
+                for(int i = 0;i < k;i++){
+                    pqp.add(new Pair(arr[i],i));
+                }
+                res[0] = pqp.peek().val;
+
+                for(int i = k; i < arr.length;i++){
+                    while(pqp.size() > 0 && pqp.peek().idx <= (i-k)){
+                        pqp.remove();
+                    }
+                    pqp.add(new Pair(arr[i],i));
+                    res[i-k+1] = pqp.peek().val;
+                }
+
+                for(int i = 0; i < res.length;i++){
+                    System.out.print(res[i]+" ");
+                }
+                System.out.println();
 
     }
 }
