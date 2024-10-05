@@ -188,3 +188,51 @@ console.log(sobj);
 let s_str ="deepjoshi";
 let s_obj = {...s_str};
 console.log(s_obj);
+
+
+                        // Rest
+function myStrings(...rest){
+    for(let i = 0; i < rest.length;i++){
+        console.log(rest[i]);
+    }
+}
+function sum_y(a,b,c,d,f,e){
+    console.log(arguments);
+    for(let i = 0; i < arguments.length;i++){
+        console.log(arguments[i]);
+    }
+}
+
+
+                        // Destructuring
+let names =["deep","jay","meet","vishal","vijay","amit","lalu"];
+
+// let winner = names[0];
+// let runner_up = names[1];
+// let third = names[2];
+
+let[winner,runner_up,third,...others] = names;
+console.log(winner);
+console.log(runner_up);
+console.log(third);
+console.log(others);
+
+// objects
+const infoUser ={
+    name:"Deep Joshi",
+    age:25,
+    height:181,
+    weight:94,
+    username:"deep@joshi",
+    password:"2002"
+}
+
+// let {username,age} = infoUser;
+// console.log(username);
+// console.log(age);
+
+let{username:user,password:pass} = infoUser;
+console.log(user);
+console.log(pass);
+let{city="Ahmedabad"} = infoUser;
+console.log(city);
