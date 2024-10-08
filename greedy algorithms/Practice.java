@@ -1,6 +1,17 @@
 import java.util.*;
 
 public class Practice {
+    static class Job{
+        int id;
+        int profit;
+        int deadline;
+
+        public Job(int i,int p,int d){
+            this.id = i;
+            this.profit = p;
+            this.deadline = d;
+        }
+    }
     public static void main(String[] args) {
         int arr[]={1,3,0,5,8,5};
         int arr1[]={2,4,6,7,9,9};
@@ -102,5 +113,91 @@ public class Practice {
             }
         }
         System.out.println("the number of pairs is = "+ count_pairs);
+
+
+        // Indian coin
+
+        Integer notes[] = {1,2,5,10,20,50,100,500,2000};
+        int amount = 610;
+        int count = 0;
+
+        Arrays.sort(notes, Comparator.reverseOrder());
+        ArrayList<Integer> note = new ArrayList<>();
+        for(int i = 0;i < notes.length;i++){
+            if(notes[i] <= amount){
+                while(notes[i] <= amount){
+                    note.add(notes[i]);
+                    amount -= notes[i];
+                    count++;
+                }
+            }
+        }
+        System.out.println("the total notes are = "+count);
+        System.out.println(note);
+
+
+        // Job sequencing problem
+
+        int jobinfo[][] = {{4,20},{1,10},{1,40},{1,30}};
+        int time = 0;
+
+        ArrayList<Job> jobarr = new ArrayList<>();
+        for(int i = 0;i < jobinfo.length;i++){
+            jobarr.add(new Job(i,jobinfo[i][1],jobinfo[i][0]));
+        }
+
+        Collections.sort(jobarr, (obj,obj2) -> obj2.profit - obj.profit);
+
+        ArrayList<Integer> sequ = new ArrayList<>();
+        for(int i = 0;i < jobarr.size();i++){
+            Job curr = jobarr.get(i);
+            if(curr.deadline > time){
+                sequ.add(curr.id);
+                time += curr.deadline;
+            }
+        }
+        System.out.println("Maximum jobs can be done are = "+sequ.size());
+        System.out.print("job "+sequ+" ");
+        System.out.println();
+
+
+
+        // Chocola problem
+        int n = 4;
+        int m = 6;
+        Integer horizontal[] = {4,1,2};
+        Integer vertical [] = {2,1,3,1,4};
+
+        Arrays.sort(horizontal,Collections.reverseOrder());
+        Arrays.sort(vertical,Collections.reverseOrder());
+
+        int h = 0;
+        int v = 0;
+        int hp = 1;
+        int vp = 1;
+        int cost = 0;
+        
+        while(h < horizontal.length && v < vertical.length){
+            if(horizontal[h] >= vertical[v]){
+                hp++;
+                cost += (horizontal[h] * vp);
+                h++;
+            }else{
+                vp++;
+                cost += (vertical[v] * hp);
+                v++;
+            }
+        }
+        while(h < horizontal.length){
+            cost += (horizontal[h] * vp);
+            h++;
+            hp++;
+        }
+        while(v < vertical.length){
+            cost += (vertical[v] * hp);
+            v++;
+            vp++;
+        }
+        System.err.println("our minimum cost is = "+ cost);
     }
 }
