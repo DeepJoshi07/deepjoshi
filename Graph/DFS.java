@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class BFS {
-    static class Ege{
+public class DFS {
+     static class Ege{
         int src;
         int dest;
         int wt;
@@ -40,31 +40,40 @@ public class BFS {
 
         graph[5].add(new Ege(6, 5, 1));
     }
-    public static void bfs(ArrayList<Ege>graph[]){
-        boolean arr[] = new boolean[graph.length];
-        Queue<Integer> q = new LinkedList<>();
-        q.add(0);
+    public static void dfs(ArrayList<Ege>graph[],boolean[] visited,int curr){
+       
+        visited[curr] = true;
+        System.out.print(curr+" ");
 
-        while(!q.isEmpty()){
-            int curr = q.remove();
-
-            if(!arr[curr]){
-                System.out.print(curr+" ");
-                arr[curr] = true;
-                for(int i = 0; i < graph[curr].size();i++){
-                    Ege el = graph[curr].get(i);
-                    q.add(el.dest);
-                }
+        for(int i = 0;i < graph[curr].size();i++){
+            Ege e = graph[curr].get(i);
+            if(!visited[e.dest]){
+                dfs(graph,visited,e.dest);
             }
         }
 
+    }
+    public static boolean haspath(ArrayList<Ege>graph[],int src,int dest,boolean arr[]){
+        if(src == dest){
+            return true;
+        }
+        arr[src] = true;
+
+        for(int i = 0;i < graph[src].size();i++){
+            Ege e = graph[src].get(i);
+            if(!arr[e.dest] && haspath(graph,e.dest,dest,arr)){
+                return true;
+            }
+        }
+        return false;
     }
     public static void main(String[] args) {
         int v = 7;
         @SuppressWarnings("unchecked")
         ArrayList<Ege> []graph = new ArrayList[v];
         creategraph(graph);
-        bfs(graph);
+        dfs(graph, new boolean[v],0);
+        System.out.println();
+        System.out.println(haspath(graph, 0, 10, new boolean[v]));
     }
-    
 }
