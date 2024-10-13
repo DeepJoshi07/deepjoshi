@@ -40,7 +40,7 @@ public class DFS {
 
         graph[5].add(new Ege(6, 5, 1));
     }
-    public static void dfs(ArrayList<Ege>graph[],boolean[] visited,int curr){
+    public static void dfs2(ArrayList<Ege>graph[],boolean[] visited,int curr){
        
         visited[curr] = true;
         System.out.print(curr+" ");
@@ -53,6 +53,28 @@ public class DFS {
         }
 
     }
+
+    public static void dfs(ArrayList<Ege>graph[]){
+        boolean[] visited = new boolean[graph.length];
+        for(int i = 0;i < graph.length;i++){
+            if(!visited[i]){
+                dfsutil(graph, visited, i);
+            }
+        }
+    }
+
+    public static void dfsutil(ArrayList<Ege>graph[],boolean[] visited,int curr){
+        visited[curr] = true;
+        System.out.println(curr+" ");
+
+        for(int i = 0;i < graph[curr].size();i++){
+            Ege e = graph[curr].get(i);
+            if(!visited[e.dest]){
+                dfsutil(graph,visited,e.dest);
+            }
+        }
+    }
+
     public static boolean haspath(ArrayList<Ege>graph[],int src,int dest,boolean arr[]){
         if(src == dest){
             return true;
@@ -72,7 +94,7 @@ public class DFS {
         @SuppressWarnings("unchecked")
         ArrayList<Ege> []graph = new ArrayList[v];
         creategraph(graph);
-        dfs(graph, new boolean[v],0);
+        dfs2(graph, new boolean[v],0);
         System.out.println();
         System.out.println(haspath(graph, 0, 10, new boolean[v]));
     }

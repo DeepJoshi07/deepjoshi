@@ -1,5 +1,7 @@
 import java.util.*;
 
+import Hi_queues.Queues_linkedlist.Queue;
+
 public class BFS {
     static class Ege{
         int src;
@@ -40,7 +42,7 @@ public class BFS {
 
         graph[5].add(new Ege(6, 5, 1));
     }
-    public static void bfs(ArrayList<Ege>graph[]){
+    public static void bfs2(ArrayList<Ege>graph[]){
         boolean arr[] = new boolean[graph.length];
         Queue<Integer> q = new LinkedList<>();
         q.add(0);
@@ -59,12 +61,42 @@ public class BFS {
         }
 
     }
+
+    public static void bsf(ArrayList<Ege>[]graph){
+        boolean visited [] = new boolean[graph.length];
+        for(int i = 0;i < graph.length;i++){
+            if(!visited[i]){
+                bsfutil(graph,visited);
+            }
+        }
+    }
+
+    public static void bfsutil(ArrayList<Ege>[]graph,boolean visited[]){
+       
+        Queue<Integer> q = new LinkedList<>();
+
+        q.add(0);
+
+        while(!q.isEmpty()){
+            int curr = q.remove();
+
+            if(!visited[curr]){
+                System.out.print(curr+" ");
+                visited[curr] = true;
+
+                for(int i = 0;i < graph[curr].size();i++){
+                    Ege el = graph[curr].get(i);
+                    q.add(el.dest);
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         int v = 7;
         @SuppressWarnings("unchecked")
         ArrayList<Ege> []graph = new ArrayList[v];
         creategraph(graph);
-        bfs(graph);
+        bfs2(graph);
     }
     
 }
