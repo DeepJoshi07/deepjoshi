@@ -1,6 +1,6 @@
 import java.util.*;
 
-import Hi_queues.Queues_linkedlist.Queue;
+
 
 public class BFS {
     static class Ege{
@@ -66,7 +66,7 @@ public class BFS {
         boolean visited [] = new boolean[graph.length];
         for(int i = 0;i < graph.length;i++){
             if(!visited[i]){
-                bsfutil(graph,visited);
+                bfsutil(graph,visited);
             }
         }
     }

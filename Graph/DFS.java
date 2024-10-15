@@ -48,7 +48,7 @@ public class DFS {
         for(int i = 0;i < graph[curr].size();i++){
             Ege e = graph[curr].get(i);
             if(!visited[e.dest]){
-                dfs(graph,visited,e.dest);
+                dfs2(graph,visited,e.dest);
             }
         }
 
